@@ -992,6 +992,9 @@ function termLink(label, url) {
  * Uses the full Codespace URL so the path is preserved.
  */
 function tryOpenBrowser(url) {
+    if (!/^[a-zA-Z0-9_\-\./\\:]+$/.test(url)) {
+        return false;
+    }
     try {
         execSync(
             `python3 -c "import webbrowser; webbrowser.open('${url}')"`,
